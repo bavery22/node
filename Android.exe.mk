@@ -18,8 +18,6 @@ include $(CLEAR_VARS)
 include $(LOCAL_PATH)/Android.common.mk
 
 LOCAL_SHARED_LIBRARIES += \
-	crypto \
-	ssl \
 	v8
 
 LOCAL_STATIC_LIBRARIES := \
@@ -29,9 +27,12 @@ LOCAL_STATIC_LIBRARIES := \
 	pty
 
 LOCAL_LDFLAGS += -rdynamic \
+	-L $(ANDROID_PRODUCT_OUT)/obj/lib \
+	-lcrypto \
+	-lssl \
 	-lz \
 	-llog
-
+LOCAL_C_INCLUDES+=../openssl/include
 include $(BUILD_EXECUTABLE)
 
 $(call import-module,deps/cares)
@@ -39,4 +40,4 @@ $(call import-module,deps/http_parser)
 $(call import-module,deps/uv)
 $(call import-module,deps/v8)
 $(call import-module,pty)
-$(call import-module,openssl-android)
+# $(call import-module,openssl-android)
