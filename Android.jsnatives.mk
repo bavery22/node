@@ -41,7 +41,8 @@ NODE_LOCAL_JS_LIBRARY_FILES := \
 	lib/vm.js \
 	lib/zlib.js \
 	config.android \
-	src/macros.py
+	src/macros.py \
+	src/perfctr_macros.py
 
 PATH_LOCAL_JS_LIBRARY_FILES := $(addprefix $(LOCAL_PATH)/, $(NODE_LOCAL_JS_LIBRARY_FILES))
 
